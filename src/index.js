@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer")
 const app = express()
 const PORT = process.env.PORT || 3030
 
-const SMTP_CONFIG = require("./config/smtp")
+//const SMTP_CONFIG = require("./config/smtp")
 
 app.use(express.json(), express.urlencoded())
 
@@ -18,13 +18,14 @@ app.get("/", async(request, response) => {
 })
 
 app.post("/send-email", async(request, response) => {
+  //host: SMTP_CONFIG.host
   let transport = nodemailer.createTransport({
-    host: SMTP_CONFIG.host,
-    port: SMTP_CONFIG.port,
+    host: process.env.HOST,
+    port: process.env.PORT,
     secure: false,
     auth: {
-      user: SMTP_CONFIG.user,
-      pass: SMTP_CONFIG.pass,
+      user: process.env.USER,
+      pass: process.env.PASSWORD,
     },
     tls: {
       rejectUnauthorized: false
