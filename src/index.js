@@ -2,7 +2,7 @@ const express = require("express")
 const nodemailer = require("nodemailer")
 
 const app = express()
-const PORT = 3030 || process.env.port
+const PORT = process.env.PORT || 3030
 
 const SMTP_CONFIG = require("./config/smtp")
 
