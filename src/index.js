@@ -49,8 +49,7 @@ app.post("/send-email", async(request, response) => {
   })
 
   return response.json({
-    error: false,
-    message: "email sent!"
+    message: "Email successfully sent! You can close this page now :D"
   })
 })
 
