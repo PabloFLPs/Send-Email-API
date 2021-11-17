@@ -8,6 +8,15 @@ const SMTP_CONFIG = require("./config/smtp")
 
 app.use(express.json(), express.urlencoded())
 
+app.get("/", async(request, response) => {
+  return response.json({
+    "Example JSON post": "example",
+    "name": "name",
+    "email": "email@emailDomain.com",
+    "message": "message"
+  })
+})
+
 app.post("/send-email", async(request, response) => {
   let transport = nodemailer.createTransport({
     host: SMTP_CONFIG.host,
