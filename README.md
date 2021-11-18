@@ -29,7 +29,8 @@ You can also utilize a software as Insomnia or Postman to send data in the POST 
 ```
 {
   "name": "name",
-  "email": "email@emailDomain.com",
+  "sender": "senderEmail@emailDomain.com",
+  "receiver": "receiverEmail@emailDomain.com",
   "message": "message"
 }
 ```
