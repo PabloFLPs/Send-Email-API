@@ -17,7 +17,7 @@ app.get("/", (request, response) => {
   return response.json({
     "name": "name",
     "email": "senderEmail@emailDomain.com",
-    "addressee": "addresseeEmail@emailDomain.com",
+    "to": "addresseeEmail@emailDomain.com",
     "message": "message"
   })
 })
@@ -38,9 +38,11 @@ app.post("/send-email", (request, response) => {
 
   let data = request.body
 
+  if (!data.to) data.to = "send.email.free.api@gmail.com"
+
   transport.sendMail({
     from: `${data.name}`,
-    to: `${data.addressee}` || "send.email.free.api@gmail.com",
+    to: `${data.to}`,
     subject: "Send Email Free API - Message",
     text: `${data.message} - Att.: ${data.name}: <${data.email}>`
   }, function(err){
@@ -49,8 +51,6 @@ app.post("/send-email", (request, response) => {
       message: "The email was not sent!"
     })
   })
-
-  console.log(data, `${host}:${user}`)
 
   return response.json({
     error: false,
