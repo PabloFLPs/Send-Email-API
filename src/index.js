@@ -1,10 +1,10 @@
 const express = require("express")
 const nodemailer = require("nodemailer")
 
-const app = express()
-const PORT = process.env.port || 3030
-
 require("dotenv").config()
+
+const app = express()
+const PORT = process.env.PORT || 3030
 
 const host = process.env.API_HOST
 const apiPort = process.env.API_PORT
@@ -49,7 +49,7 @@ app.post("/send-email", (request, response) => {
     })
   })
 
-  //console.log(data, `${host}:${user}`)
+  console.log(data, `${host}:${user}`)
 
   return response.json({
     error: false,
