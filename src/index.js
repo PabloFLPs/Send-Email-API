@@ -2,55 +2,57 @@ const express = require("express")
 const nodemailer = require("nodemailer")
 
 const app = express()
-const PORT = process.env.PORT || 3030
+const PORT = 3030
 
-//const SMTP_CONFIG = require("./config/smtp")
+require("dotenv").config()
 
-require("dotenv")
+const host = process.env.API_HOST
+const apiPort = process.env.API_PORT
+const user = process.env.API_USER
+const password = process.env.API_PASSWORD
 
 app.use(express.json(), express.urlencoded())
 
-app.get("/", async(request, response) => {
+app.get("/", (request, response) => {
   return response.json({
-    "Example JSON post": "example",
     "name": "name",
     "email": "email@emailDomain.com",
     "message": "message"
   })
 })
 
-app.post("/send-email", async(request, response) => {
-  //host: SMTP_CONFIG.host
+app.post("/send-email", (request, response) => {
   let transport = nodemailer.createTransport({
-    host: process.env.HOST,
-    port: process.env.PORT,
+    host: host,
+    port: apiPort,
     secure: false,
     auth: {
-      user: process.env.USER,
-      pass: process.env.PASSWORD,
+      user: user,
+      pass: password
     },
     tls: {
       rejectUnauthorized: false
     }
   })
 
-  console.log(request.body)
+  let data = request.body
 
-  let message = {
-    from: `${request.body.name}`,
+  transport.sendMail({
+    from: `${data.name}`,
     to: "send.email.free.api@gmail.com",
-    subject: "Get in Touch - My Portifolio",
-    text: `${request.body.message} - Att.: ${request.body.name}: <${request.body.email}>`
-  }
-
-  transport.sendMail(message, function(err){
+    subject: "Send Email Free API - Message",
+    text: `${data.message} - Att.: ${data.name}: <${data.email}>`
+  }, function(err){
     if(err) return response.status(400).json({
       error: true,
-      message: "Error: Email not sent!"
+      message: "The email was not sent!"
     })
   })
 
+  //console.log(data, `${host}:${user}`)
+
   return response.json({
+    error: false,
     message: "Email successfully sent! You can close this page now :D"
   })
 })
