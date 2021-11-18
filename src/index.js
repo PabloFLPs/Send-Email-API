@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 3030
 
 //const SMTP_CONFIG = require("./config/smtp")
 
+require("dotenv")
+
 app.use(express.json(), express.urlencoded())
 
 app.get("/", async(request, response) => {
@@ -20,20 +22,6 @@ app.get("/", async(request, response) => {
 app.post("/send-email", async(request, response) => {
   //host: SMTP_CONFIG.host
   let transport = nodemailer.createTransport({
-    /*
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-      user: "send.email.free.api@gmail.com",
-      pass: "my-free-api-send-email-nodemailer-smtp-gmail"
-    },
-    tls: {
-      rejectUnauthorized: false
-    }
-    */
-
-    
     host: process.env.HOST,
     port: process.env.PORT,
     secure: false,
@@ -44,7 +32,6 @@ app.post("/send-email", async(request, response) => {
     tls: {
       rejectUnauthorized: false
     }
-    
   })
 
   console.log(request.body)
