@@ -34,4 +34,4 @@ You can also utilize a software as Insomnia or Postman to send data in the POST 
 }
 ```
 
-If you want to use this project with your own email server, take a look at the `.env.example` with the structure of the .env variables to set in the application. The variables are API_HOST (to use gmail server, the default is "smtp.gmail.com"), API_PORT (default is 587), API_USER (user email) and API_PASSWORD (user password).
+- If you want to use this project with your own email server, take a look at the `.env.example` with the structure of the .env variables to set in the application. The variables are API_HOST (to use gmail server, the default is "smtp.gmail.com"), API_PORT (default is 587), API_USER (user email) and API_PASSWORD (user password).
