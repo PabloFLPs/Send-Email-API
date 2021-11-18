@@ -2,7 +2,7 @@ const express = require("express")
 const nodemailer = require("nodemailer")
 
 const app = express()
-const PORT = 3030
+const PORT = process.env.port || 3030
 
 require("dotenv").config()
 
