@@ -20,6 +20,7 @@ app.get("/", async(request, response) => {
 app.post("/send-email", async(request, response) => {
   //host: SMTP_CONFIG.host
   let transport = nodemailer.createTransport({
+    /*
     host: "smtp.gmail.com",
     port: 587,
     secure: false,
@@ -30,8 +31,9 @@ app.post("/send-email", async(request, response) => {
     tls: {
       rejectUnauthorized: false
     }
+    */
 
-    /*
+    
     host: process.env.HOST,
     port: process.env.PORT,
     secure: false,
@@ -42,7 +44,7 @@ app.post("/send-email", async(request, response) => {
     tls: {
       rejectUnauthorized: false
     }
-    */
+    
   })
 
   console.log(request.body)
