@@ -30,7 +30,7 @@ You can also utilize a software as Insomnia or Postman to send data in the POST 
 {
   "name": "name",
   "email": "senderEmail@emailDomain.com",
-  "addressee": "addresseeEmail@emailDomain.com",
+  "to": "addresseeEmail@emailDomain.com",
   "message": "message"
 }
 ```
