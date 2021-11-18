@@ -16,7 +16,8 @@ app.use(express.json(), express.urlencoded())
 app.get("/", (request, response) => {
   return response.json({
     "name": "name",
-    "email": "email@emailDomain.com",
+    "sender": "senderEmail@emailDomain.com",
+    "receiver": "receiverEmail@emailDomain.com",
     "message": "message"
   })
 })
@@ -39,7 +40,7 @@ app.post("/send-email", (request, response) => {
 
   transport.sendMail({
     from: `${data.name}`,
-    to: "send.email.free.api@gmail.com",
+    to: `${data.receiver}` || "send.email.free.api@gmail.com",
     subject: "Send Email Free API - Message",
     text: `${data.message} - Att.: ${data.name}: <${data.email}>`
   }, function(err){
