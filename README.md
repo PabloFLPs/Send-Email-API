@@ -24,7 +24,7 @@ The form tag structure utilized in my site has the following structure
 
 The "name" and "email" are utilized to identify and contact the sender back.
 
-You can also utilize a software as Insomnia or Postman to send data in the POST route with a JSON request like this:
+You can also utilize a software as Insomnia or Postman to send data in the POST route that is `/send-email` (just access the following adress: `https://email-free-api.herokuapp.com/send-email`) with a JSON request like this:
 
 ```
 {
