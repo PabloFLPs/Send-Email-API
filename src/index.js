@@ -1,5 +1,6 @@
 const express = require("express")
 const nodemailer = require("nodemailer")
+const cors = require("cors")
 
 require("dotenv").config()
 
@@ -11,7 +12,7 @@ const apiPort = process.env.API_PORT
 const user = process.env.API_USER
 const password = process.env.API_PASSWORD
 
-app.use(express.json(), express.urlencoded())
+app.use(express.json(), express.urlencoded(), cors())
 
 app.get("/", (request, response) => {
   return response.json({
